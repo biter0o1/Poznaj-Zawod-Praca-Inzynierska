@@ -1,9 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Example index{% endblock %}
+{% block title %}
+    <script>
+        import Example from "../../assets/js/components/Example";
+        export default {
+            components: {Example}
+        }
+    </script>
+    Example index{% endblock %}
 
 {% block body %}
     <h1>Example index</h1>
+
+    <Example></Example>
 
     <table class="table">
         <thead>
@@ -33,3 +42,4 @@
 
     <a href="{{ path('app_example_new') }}">Create new</a>
 {% endblock %}
+
