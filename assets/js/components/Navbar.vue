@@ -10,7 +10,10 @@
           <a class="nav-item nav-link active" href="#">Strona główna <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="#">Apka</a>
           <a class="nav-item nav-link" href="#">Autor</a>
+          <a class="nav-item nav-link" href="#">Panel Admina</a>
+          <a class="nav-item nav-link" href="#">Pokaż profil</a>
           <a class="nav-item nav-link" href="/login">Logowanie</a>
+          <a class="nav-item nav-link" href="/logout">Wyloguj się</a>
           <a class="nav-item nav-link" href="/register">Rejestracja</a>
           <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </div>
