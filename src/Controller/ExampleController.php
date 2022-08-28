@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/example')]
 class ExampleController extends AbstractController
 {
-    #[Route('/', name: 'app_example_index', methods: ['GET'])]
+    #[Route('/', name: 'app_example_index', methods: 'GET')]
     public function index(ExampleRepository $exampleRepository): Response
     {
         return $this->render('example/index.html.twig', [
@@ -21,7 +21,7 @@ class ExampleController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_example_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'app_example_new', methods: 'POST')]
     public function new(Request $request, ExampleRepository $exampleRepository): Response
     {
         $example = new Example();
@@ -40,7 +40,7 @@ class ExampleController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_example_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'app_example_show', methods: 'GET')]
     public function show(Example $example): Response
     {
         return $this->render('example/show.html.twig', [
@@ -48,7 +48,7 @@ class ExampleController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_example_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_example_edit', methods: 'PUT')]
     public function edit(Request $request, Example $example, ExampleRepository $exampleRepository): Response
     {
         $form = $this->createForm(ExampleType::class, $example);
@@ -66,7 +66,7 @@ class ExampleController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_example_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_example_delete', methods: 'DELETE')]
     public function delete(Request $request, Example $example, ExampleRepository $exampleRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$example->getId(), $request->request->get('_token'))) {

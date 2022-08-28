@@ -15,25 +15,28 @@
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="{{ path('example') }}">Uploader</a>
+            <a class="navbar-brand" href="{{ path('example') }}">Wybierz Zawód</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item {% if app.request.get('_route') == 'index' %}active{% endif %}">
+                    <li class="nav-item active">
                         <a class="nav-link" href="{{ path('example') }}">Strona główna</a>
                     </li>
-                    <li class="nav-item {% if app.request.get('_route') == 'latest_photos' %}active{% endif %}">
-                        <a class="nav-link" href="{{ path('example') }}">Najnowsze</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('example') }}">QUIZ osobowości</a>
                     </li>
-                    <li class="nav-item {% if app.request.get('_route') == 'my_photos' %}active{% endif %}">
-                        <a class="nav-link" href="{{ path('example') }}">Moje zdjęcia</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('example') }}">Autorzy</a>
                     </li>
                     {% if app.user %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_logout') }}">Wyloguj się</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ path('example') }}">Mój profil</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
@@ -41,6 +44,15 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_register') }}">Zarejestruj się</a>
+                        </li>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ path('user') }}">Zarządzaj użytkownikami</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ path('example') }}">Zarządzaj zawartością testu osobowości</a>
                         </li>
                     {% endif %}
                 </ul>

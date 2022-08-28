@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Informacje o Użytkowniku{% endblock %}
+
+{% block body %}
+    <h1>Informacje o Użytkowniku</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+            <tr>
+                <td class="bg-primary">{{ user.id }}</td>
+                <td class="bg-primary">{{ user.username }}</td>
+                <td class="bg-primary">{{ user.email }}</td>
+                <td class="bg-primary">{{ user.roles | join(', ') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_index') }}">Wróć do listy Użytkowników</a>
+
+    <a href="{{ path('user_edit', {'id': user.id}) }}">Edytuj</a>
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}

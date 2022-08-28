@@ -5,3 +5,7 @@
 example:
     path: /
     controller: App\Controller\ExampleController::index
+
+user:
+    path: /user
+    controller: App\Controller\UserController::index

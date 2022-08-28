@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    <script>
+        import Example from "../../assets/js/components/Example";
+        export default {
+            components: {Example}
+        }
+    </script>
+    Wyświetlenie użytkowników
+{% endblock %}
+
+{% block body %}
+    <h1>Wyświetlenie użytkowników</h1>
+    <div class="row justify-content-center">
+        <a href="{{ path('user_new') }}"><button>Dodaj użytkownika</button></a>
+        <table class="table table-responsive table-primary table-bordered table-hover text-center ">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr class="bg-primary">
+                    <td class="bg-primary">{{ user.id }}</td>
+                    <td class="bg-primary">{{ user.username }}</td>
+                    <td class="bg-primary">{{ user.email }}</td>
+                    <td class="bg-primary">{{ user.roles | join(', ') }}</td>
+                    <td class="bg-primary">
+                        <a href="{{ path('user_show', {'id': user.id}) }}"><button>Pokaż</button></a>
+                        <a href="{{ path('user_edit', {'id': user.id}) }}"><button>Edytuj</button></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Nie znaleziono użytkowników</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
