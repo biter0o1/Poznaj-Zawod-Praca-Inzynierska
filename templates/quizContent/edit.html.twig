@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edytuj zawartość quizu{% endblock %}
+
+{% block body %}
+    <h1>Edytuj zawartość quizu</h1>
+
+    {{ include('quizContent/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('quizContent_index') }}">Wróć do zawartości Quizu</a>
+
+    {{ include('quizContent/_delete_form.html.twig') }}
+{% endblock %}

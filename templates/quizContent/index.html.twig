@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+    Wyświetlenie zawartości quizu
+{% endblock %}
+
+{% block body %}
+    <h1>Wyświetlenie zawartości quizu</h1>
+    <div class="row justify-content-center">
+        <a href="{{ path('quizContent_new') }}"><button>Dodaj element quizu</button></a>
+        <table class="table table-responsive table-primary table-bordered table-hover text-center ">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Text</th>
+                    <th>Osobowość</th>
+                    <th>Osobowość symbol</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for quizContent in quizContents %}
+                <tr class="bg-primary">
+                    <td class="bg-primary">{{ quizContent.id }}</td>
+                    <td class="bg-primary">{{ quizContent.text }}</td>
+                    <td class="bg-primary">{{ quizContent.personality }}</td>
+                    <td class="bg-primary">{{ quizContent.personalitySign }}</td>
+                    <td class="bg-primary">
+                        <a href="{{ path('quizContent_show', {'id': quizContent.id}) }}"><button>Pokaż</button></a>
+                        <a href="{{ path('quizContent_edit', {'id': quizContent.id}) }}"><button>Edytuj</button></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Nie znaleziono zawartości quizu</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

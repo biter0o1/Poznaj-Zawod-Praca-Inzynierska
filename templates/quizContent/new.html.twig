@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Stwórz nowy element quizu{% endblock %}
+
+{% block body %}
+    <h1>Stwórz nowy element quizu</h1>
+
+    {{ include('quizContent/_form.html.twig') }}
+
+    <a href="{{ path('quizContent_index') }}">Wróć do zawartości Quizu</a>
+{% endblock %}

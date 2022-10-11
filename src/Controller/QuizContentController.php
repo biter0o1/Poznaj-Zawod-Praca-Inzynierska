@@ -2,77 +2,77 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\UserType;
-use App\Repository\UserRepository;
+use App\Entity\QuizContent;
+use App\Form\QuizContentType;
+use App\Repository\QuizContentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/user')]
-class UserController extends AbstractController
+#[Route('/quizContent')]
+class QuizContentController extends AbstractController
 {
-    #[Route('/', name: 'user_index', methods: 'GET')]
-    public function index(UserRepository $userRepository): Response
+    #[Route('/', name: 'quizContent_index', methods: 'GET')]
+    public function index(QuizContentRepository $quizContentRepository): Response
     {
-        return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
+        return $this->render('quizContent/index.html.twig', [
+            'quizContents' => $quizContentRepository->findAll(),
         ]);
     }
 
-    #[Route('/new', name: 'user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, UserRepository $userRepository): Response
+    #[Route('/new', name: 'quizContent_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, QuizContentRepository $quizContentRepository): Response
     {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+        $quizContent = new QuizContent();
+        $form = $this->createForm(QuizContentType::class, $quizContent);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $userRepository->add($user, true);
+            $quizContentRepository->add($quizContent, true);
 
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('quizContent_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('user/new.html.twig', [
-            'user' => $user,
+        return $this->renderForm('quizContent/new.html.twig', [
+            'quizContent' => $quizContent,
             'form' => $form,
         ]);
     }
 
-    #[Route('/{id}', name: 'user_show', methods: 'GET')]
-    public function show(User $user): Response
+    #[Route('/{id}', name: 'quizContent_show', methods: 'GET')]
+    public function show(QuizContent $quizContent): Response
     {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
+        return $this->render('quizContent/show.html.twig', [
+            'quizContent' => $quizContent,
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'user_edit', methods: ['GET', 'PUT'])]
-    public function edit(Request $request, User $user, UserRepository $userRepository): Response
+    #[Route('/{id}/edit', name: 'quizContent_edit', methods: ['GET', 'PUT'])]
+    public function edit(Request $request, QuizContent $quizContent, QuizContentRepository $quizContentRepository): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(QuizContentType::class, $quizContent);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $userRepository->add($user, true);
+            $quizContentRepository->add($quizContent, true);
 
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('quizContent_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('user/edit.html.twig', [
-            'user' => $user,
+        return $this->renderForm('quizContent/edit.html.twig', [
+            'quizContent' => $quizContent,
             'form' => $form,
         ]);
     }
 
-    #[Route('/{id}', name: 'user_delete', methods: ['GET', 'DELETE'])]
-    public function delete(Request $request, User $user, UserRepository $userRepository): Response
+    #[Route('/{id}', name: 'quizContent_delete', methods: ['GET', 'DELETE'])]
+    public function delete(Request $request, QuizContent $quizContent, QuizContentRepository $quizContentRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
-            $userRepository->remove($user, true);
+        if ($this->isCsrfTokenValid('delete'.$quizContent->getId(), $request->request->get('_token'))) {
+            $quizContentRepository->remove($quizContent, true);
         }
 
-        return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('quizContent_index', [], Response::HTTP_SEE_OTHER);
     }
 }

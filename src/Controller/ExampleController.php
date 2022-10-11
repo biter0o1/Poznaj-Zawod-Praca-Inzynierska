@@ -6,6 +6,7 @@ use App\Entity\Example;
 use App\Form\ExampleType;
 use App\Repository\ExampleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,6 +20,12 @@ class ExampleController extends AbstractController
         return $this->render('example/index.html.twig', [
             'examples' => $exampleRepository->findAll(),
         ]);
+    }
+
+    #[Route('/json', name: 'app_example_index_json', methods: 'GET')]
+    public function testJson(ExampleRepository $exampleRepository): JsonResponse
+    {
+        return new JsonResponse(array('name' => 'abc'));
     }
 
     #[Route('/new', name: 'app_example_new', methods: 'POST')]
