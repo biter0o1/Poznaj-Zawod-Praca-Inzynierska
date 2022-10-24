@@ -6,6 +6,14 @@ example:
     path: /
     controller: App\Controller\ExampleController::index
 
+exampleNew:
+    path: /new
+    controller: App\Controller\ExampleController::new
+
 user:
     path: /user
     controller: App\Controller\UserController::index
+
+quiz:
+    path: /quizContent
+    controller: App\Controller\QuizContentController::index
