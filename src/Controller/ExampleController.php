@@ -28,7 +28,7 @@ class ExampleController extends AbstractController
         return new JsonResponse(array('name' => 'abc'));
     }
 
-    #[Route('/new', name: 'app_example_new', methods: 'POST')]
+    #[Route('/new', name: 'app_example_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ExampleRepository $exampleRepository): Response
     {
         $example = new Example();
@@ -55,7 +55,7 @@ class ExampleController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_example_edit', methods: 'PUT')]
+    #[Route('/{id}/edit', name: 'app_example_edit', methods: ['GET', 'PUT'])]
     public function edit(Request $request, Example $example, ExampleRepository $exampleRepository): Response
     {
         $form = $this->createForm(ExampleType::class, $example);
