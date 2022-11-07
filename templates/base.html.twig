@@ -9,7 +9,7 @@
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
+        <div class="container">
             <a class="navbar-brand" href="{{ path('example') }}">Wybierz Zawód</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -23,9 +23,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ path('quizContent_index') }}">QUIZ osobowości</a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ path('example') }}">Autorzy</a>
-                    </li>
+{#                    <li class="nav-item active">#}
+{#                        <a class="nav-link" href="{{ path('example') }}">Autorzy</a>#}
+{#                    </li>#}
                     {% if not app.user %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_login') }}">Zaloguj się</a>
@@ -60,12 +60,13 @@
         </div>
     </nav>
 
+    {#        <div id="app" data-user="{{ app.user.username | serialize('json')  | json_encode }}">#}
+    <div id="app" class="container">
+        {#            <Example></Example>#}
+        {% block body %}{% endblock %}
+    </div>
 
-{#        <div id="app" data-user="{{ app.user.username | serialize('json')  | json_encode }}">#}
-        <div id="app">
-            <Example></Example>
-            {% block body %}{% endblock %}
-        </div>
+
     {% block javascripts %}
         {{ encore_entry_script_tags('js/app') }}
         <script src="{{ asset('build/js/app.js') }}"></script>
