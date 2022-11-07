@@ -21,6 +21,7 @@
                     <th>Username</th>
                     <th>Email</th>
                     <th>Role</th>
+                    <th>Zweryfikowany</th>
                     <th>Akcje</th>
                 </tr>
             </thead>
@@ -31,6 +32,7 @@
                     <td class="bg-primary">{{ user.username }}</td>
                     <td class="bg-primary">{{ user.email }}</td>
                     <td class="bg-primary">{{ user.roles | join(', ') }}</td>
+                    <td class="bg-primary">{{ user.isVerified ? "Tak" : "Nie" }}</td>
                     <td class="bg-primary">
                         <a href="{{ path('user_show', {'id': user.id}) }}"><button>Pokaż</button></a>
                         <a href="{{ path('user_edit', {'id': user.id}) }}"><button>Edytuj</button></a>
