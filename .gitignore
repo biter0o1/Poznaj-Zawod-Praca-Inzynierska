@@ -1,4 +1,6 @@
 /.idea/
+/.docker/
+/.docker/data/
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -140,4 +142,3 @@ fabric.properties
 .idea/**/azureSettings.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/phpstorm
-/.docker/
