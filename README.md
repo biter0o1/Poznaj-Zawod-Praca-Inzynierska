@@ -12,3 +12,7 @@ Odpalenie aplikacji:
 Załadowanie fixtur:
 
 `php bin/console doctrine:fixtures:load`
+
+Messenger:
+
+`php bin/console messenger:consume async --memory-limit=64M`
