@@ -48,7 +48,7 @@ class QuizContentController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'quizContent_edit', methods: ['GET', 'PUT'])]
+    #[Route('/{id}/edit', name: 'quizContent_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, QuizContent $quizContent, QuizContentRepository $quizContentRepository): Response
     {
         $form = $this->createForm(QuizContentType::class, $quizContent);
@@ -66,7 +66,7 @@ class QuizContentController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'quizContent_delete', methods: ['GET', 'DELETE'])]
+    #[Route('/{id}', name: 'quizContent_delete', methods: ['GET', 'POST'])]
     public function delete(Request $request, QuizContent $quizContent, QuizContentRepository $quizContentRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$quizContent->getId(), $request->request->get('_token'))) {

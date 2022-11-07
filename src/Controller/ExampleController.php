@@ -55,7 +55,7 @@ class ExampleController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_example_edit', methods: ['GET', 'PUT'])]
+    #[Route('/{id}/edit', name: 'app_example_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Example $example, ExampleRepository $exampleRepository): Response
     {
         $form = $this->createForm(ExampleType::class, $example);
@@ -73,7 +73,7 @@ class ExampleController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_example_delete', methods: 'DELETE')]
+    #[Route('/{id}', name: 'app_example_delete', methods: ['GET', 'POST'])]
     public function delete(Request $request, Example $example, ExampleRepository $exampleRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$example->getId(), $request->request->get('_token'))) {
