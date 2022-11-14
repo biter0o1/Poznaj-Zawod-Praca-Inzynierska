@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Quiz Osobowości
+{% endblock %}
+
+{% block body %}
+    <h1>Quiz Osobowości</h1>
+    <p class="description">Wykonaj quiz aby móc poznać Swoją osobowość. Zaznacz stwierdzenia które pasują do Ciebie.</p>
+
+    <div class="quiz">
+            {% for quizContent in quizContents %}
+                <button id="{{ quizContent.id }}" class="quiz-item" onclick="btnClick({{ quizContent.id }})">{{ quizContent.text }} </button>
+            {% endfor %}
+    </div>
+
+    <p class="description">Jesli zaznaczone zostały już wszystkie pasujące do Ciebie stwierdzenia, zakończ quiz.</p>
+    <button>Zakończ QUIZ //TODO</button>
+
+    <script type="application/javascript">
+        // quiz
+        // let quizItemChecked;
+        // let quizContentIds = [];
+
+        function btnClick(btnId){
+            const btn = document.getElementById(btnId)
+
+            if (btn.style.backgroundColor === 'rgb(27, 255, 72)')
+            {
+                btn.style.backgroundColor = 'tomato';
+                // quizItemChecked = false;
+            } else
+            {
+                btn.style.backgroundColor = 'rgb(27, 255, 72)';
+                // quizItemChecked = true;
+                // quizContentIds.push(btnId) // btnId rowna sie quizContent.id z bazy danych
+            }
+
+            // alert(btn.style.backgroundColor)
+
+        }
+    </script>
+
+{% endblock %}
+
