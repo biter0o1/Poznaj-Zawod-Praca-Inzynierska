@@ -8,14 +8,20 @@
     <h1>Quiz Osobowości</h1>
     <p class="description">Wykonaj quiz aby móc poznać Swoją osobowość. Zaznacz stwierdzenia które pasują do Ciebie.</p>
 
-    <div class="quiz">
+    <form method="post" action="{{ path('quiz_index') }}" onsubmit="return confirm('Czy chcesz zakończy test?');">
+        <div class="quiz">
             {% for quizContent in quizContents %}
-                <button id="{{ quizContent.id }}" class="quiz-item" onclick="btnClick({{ quizContent.id }})">{{ quizContent.text }} </button>
+                <button type="button" id="quiz_item_{{ quizContent.id }}" class="quiz-item" onclick="btnClick({{ quizContent.id }})">
+                    {{ quizContent.text }}
+                    <input type="checkbox" name="{{ quizContent.id }}" value="{{ quizContent.personalitySign }}">
+                </button>
             {% endfor %}
-    </div>
+        </div>
+        <p class="description">Jesli zaznaczone zostały już wszystkie pasujące do Ciebie stwierdzenia, zakończ quiz.</p>
+        <button class="btn btn-secondary">Zakończ QUIZ</button>
+    </form>
 
-    <p class="description">Jesli zaznaczone zostały już wszystkie pasujące do Ciebie stwierdzenia, zakończ quiz.</p>
-    <button>Zakończ QUIZ //TODO</button>
+
 
     <script type="application/javascript">
         // quiz
@@ -23,15 +29,19 @@
         // let quizContentIds = [];
 
         function btnClick(btnId){
-            const btn = document.getElementById(btnId)
+            const btn = document.querySelector('#quiz_item_' + btnId);
+            console.log(btn)
+            const inputFromQuiz = btn.querySelector('input');
 
             if (btn.style.backgroundColor === 'rgb(27, 255, 72)')
             {
                 btn.style.backgroundColor = 'tomato';
+                inputFromQuiz.checked = false;
                 // quizItemChecked = false;
             } else
             {
                 btn.style.backgroundColor = 'rgb(27, 255, 72)';
+                inputFromQuiz.checked = true;
                 // quizItemChecked = true;
                 // quizContentIds.push(btnId) // btnId rowna sie quizContent.id z bazy danych
             }

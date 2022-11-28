@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Quiz Osobowości
+{% endblock %}
+
+{% block body %}
+    <h1>Wynik Quizu Osobowości</h1>
+
+    {% for i in 0..2 %}
+        <h2>{{ personality[i].type }}</h2>
+
+        <span> Jesteś tym typem osobowości w {{ percentages[i] }}%</span>
+
+        <p>{{ personality[i].text }}</p>
+    {% endfor %}
+
+    <script type="application/javascript">
+
+    </script>
+
+{% endblock %}
+

@@ -10,7 +10,7 @@
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="{{ path('quiz_index') }}">Nazwa aplikacji?</a>
+            <a class="navbar-brand" href="{{ path('quiz_index') }}">Twój Zawód!</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -18,7 +18,7 @@
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ path('example') }}">Strona główna</a>
+                        <a class="nav-link" href="{{ path('main_page_index') }}">Strona główna</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ path('quiz_index') }}">QUIZ osobowości</a>
@@ -71,6 +71,8 @@
     {% block javascripts %}
         {{ encore_entry_script_tags('js/app') }}
         <script type="application/javascript" src="{{ asset('build/js/app.js') }}"></script>
+        <script src="https://kit.fontawesome.com/e1fc8e90d1.js" crossorigin="anonymous"></script>
+{#        font awesome#}
     {% endblock %}
     </body>
 </html>
