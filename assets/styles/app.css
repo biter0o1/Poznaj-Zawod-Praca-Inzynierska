@@ -12,6 +12,10 @@ h1 {
     text-align: center
 }
 
+.test {
+    background-color: yellowgreen;
+}
+
 .quiz {
     display: flex;
     justify-content: center;
