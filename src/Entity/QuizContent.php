@@ -11,23 +11,23 @@ class QuizContent
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
     #[ORM\Column(length: 255)]
-    private ?string $text = null;
+    private string $text;
 
     #[ORM\Column(length: 255)]
-    private ?string $personality = null;
+    private string $personality;
 
     #[ORM\Column(length: 10)]
-    private ?string $personalitySign = null;
+    private string $personalitySign;
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getText(): ?string
+    public function getText(): string
     {
         return $this->text;
     }
@@ -39,7 +39,7 @@ class QuizContent
         return $this;
     }
 
-    public function getPersonality(): ?string
+    public function getPersonality(): string
     {
         return $this->personality;
     }
@@ -51,7 +51,7 @@ class QuizContent
         return $this;
     }
 
-    public function getPersonalitySign(): ?string
+    public function getPersonalitySign(): string
     {
         return $this->personalitySign;
     }
