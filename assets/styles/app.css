@@ -5,11 +5,31 @@
 }
 
 body {
-    background-color: lightgray;
+    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    font-family: 'Montserrat', sans-serif;
 }
 
 h1 {
     text-align: center
+}
+
+/*navbar*/
+.nav-bg-color {
+    background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+}
+
+.nav-logged-bg {
+    background-color: #dcf828;
+}
+
+/*header*/
+
+header .hero-img {
+    height: 100vh;
+    background-image: url("../images/zawody.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .test {
