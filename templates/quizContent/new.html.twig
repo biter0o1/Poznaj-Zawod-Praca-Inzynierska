@@ -5,7 +5,11 @@
 {% block body %}
     <h1>Stwórz nowy element quizu</h1>
 
-    {{ include('quizContent/_form.html.twig') }}
+    {% form_theme form 'bootstrap_5_layout.html.twig' %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-primary">{{ button_label | default('Zapisz') }}</button>
+    {{ form_end(form) }}
 
     <a href="{{ path('quizContent_index') }}">Wróć do zawartości Quizu</a>
 {% endblock %}

@@ -2,68 +2,48 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta content='initial-scale=1.0, width=device-width' name='viewport'>
         <title>{% block title %}Strona Glowna!{% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('js/app') }}
         {% endblock %}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+    <nav class="navbar navbar-expand-lg sticky-top nav-bg-color">
         <div class="container">
-            <a class="navbar-brand" href="{{ path('quiz_index') }}">Twój Zawód!</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="{{ path('quiz_index') }}"><i class="fa-solid fa-user-tie"></i>Poznaj Zawód!</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarColor02">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ path('main_page_index') }}">Strona główna</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ path('quiz_index') }}">QUIZ osobowości</a>
-                    </li>
-{#                    <li class="nav-item active">#}
-{#                        <a class="nav-link" href="{{ path('example') }}">Autorzy</a>#}
-{#                    </li>#}
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link active" href="{{ path('main_page_index') }}">Strona główna</a>
+                    <a class="nav-link active" href="{{ path('quiz_index') }}">QUIZ</a>
                     {% if not app.user %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_login') }}">Zaloguj się</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_register') }}">Zarejestruj się</a>
-                        </li>
+                            <a class="nav-link active" href="{{ path('app_login') }}">Zaloguj się</a>
+                            <a class="nav-link active" href="{{ path('app_register') }}">Zarejestruj się</a>
                     {% endif %}
-
                     {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ path('user') }}">Zarządzaj użytkownikami</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ path('quizContent_index') }}">Zarządzaj zawartością testu osobowości</a>
-                        </li>
+                            <a class="nav-link active" href="{{ path('user') }}">Zarządzaj użytkownikami</a>
+                            <a class="nav-link active" href="{{ path('quizContent_index') }}">Zarządzaj zawartością testu osobowości</a>
                     {% endif %}
                     {% if app.user %}
-                        <li class="nav-item">
-                            Zalogowano jako: {{ app.user }}
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_logout') }}">Wyloguj się</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ path('example') }}">Mój profil</a>
-                        </li>
+                            <span class="nav-link active nav-logged-bg ">Zalogowano jako: {{ app.user }}</span>
+                            <a class="nav-link active nav-logged-bg " href="{{ path('app_logout') }}">Wyloguj się</a>
+                            <a class="nav-link active nav-logged-bg " href="{{ path('example') }}">Mój profil</a>
                     {% endif %}
-                </ul>
-
+                </div>
             </div>
         </div>
     </nav>
 
 
-    {#        <div id="app" data-user="{{ app.user.username | serialize('json')  | json_encode }}">#}
     <div id="app" class="container">
-        {#            <Example></Example>#}
+
         {% block body %}{% endblock %}
     </div>
 

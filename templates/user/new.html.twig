@@ -5,7 +5,12 @@
 {% block body %}
     <h1>Stwórz nowego użytkownika</h1>
 
-    {{ include('user/_form.html.twig') }}
+    {% form_theme form 'bootstrap_5_layout.html.twig' %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Zapisz') }}</button>
+    {{ form_end(form) }}
+
 
     <a href="{{ path('user_index') }}">Wróć do listy użytkowników</a>
 {% endblock %}

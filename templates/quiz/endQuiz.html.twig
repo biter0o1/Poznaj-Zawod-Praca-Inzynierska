@@ -12,7 +12,9 @@
 
         <span> Jesteś tym typem osobowości w {{ percentages[i] }}%</span>
 
-        <p>{{ personality[i].text }}</p>
+        <p>{{ personality[i].description }}</p>
+        <p>Rekomendowane rodzaje prac: {{ personality[i].recommendedProffesions }}</p>
+        <p>Przykładowe Zawody: {{ personality[i].exemplaryProfessions }}</p>
     {% endfor %}
 
     <script type="application/javascript">

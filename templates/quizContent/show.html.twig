@@ -22,9 +22,12 @@
         </tbody>
     </table>
 
-    <a href="{{ path('quizContent_index') }}">Wróć do listy Użytkowników</a>
+    <a href="{{ path('quizContent_index') }}"><button>Wróć do listy Użytkowników</button></a>
 
-    <a href="{{ path('quizContent_edit', {'id': quizContent.id}) }}">Edytuj</a>
+    <a href="{{ path('quizContent_edit', {'id': quizContent.id}) }}"><button>Edytuj</button></a>
 
-    {{ include('quizContent/_delete_form.html.twig') }}
+    <form method="post" action="{{ path('quizContent_delete', {'id': quizContent.id}) }}" onsubmit="return confirm('Czy napewno chcesz usunąć ten element?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ quizContent.id) }}">
+        <button class="btn btn-danger">Delete</button>
+    </form>
 {% endblock %}
