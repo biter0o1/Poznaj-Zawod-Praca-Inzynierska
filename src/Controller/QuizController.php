@@ -60,16 +60,22 @@ class QuizController extends AbstractController
     public function end(Request $request, QuizResultRepository $quizResultRepository): Response
     {
 
-        $maxAmount = 60; //Narazie zakladam ze bedzie 60
-
         $amount = $request->query->get('amount');
 
+        $amountOfAllchecked = 0;
+
+        foreach ($amount as $i)
+        {
+            $amountOfAllchecked += $i;
+        }
+
         $percenteges = [];
+        $personality = [];
         $index = 0;
 
         foreach ($amount as $k => $i)
         {
-            $percenteges[$index] = ($i / 100) * $maxAmount; // Liczenie ile to procent
+            $percenteges[$index] = number_format(($i / $amountOfAllchecked) * 100, 2); // Liczenie ile to procent
             $personality[$index++] = $quizResultRepository->findOneBy(['sign' => $k]);
         }
 
