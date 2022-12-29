@@ -5,44 +5,21 @@
 {% endblock %}
 
 {% block body %}
+    <h1 class="fw-bold my-5">Poznaj Swój Zawód!</h1>
+    <p class="text-center fw-bold fs-5 my-5">Zastanawiałeś się jaki zawód wybrać? Dzięki tej aplikacji będziesz mógł poznać
+        swoją osobowość oraz dowiedzieć się jakie zawody do Ciebie pasują! Wystarczy wypełnić Quiz.</p>
+
     <header>
-        <div class="hero-img">
-            <div class="hero-shadow"></div>
-            <div class="hero-text">
-                <h1>Poznaj Swój Zawód!</h1>
-                <p>Sprawdź Swoją Osobowość</p>
+        <a class="no-decoration" href="{{ path('quiz_index') }}">
+            <div class="hero-img">
+                <div class="hero-shadow"></div>
+                <div class="hero-text">
+                    <h2 class="text-center m-5">Naciśnij Tutaj aby podejść do <span class="highlight-text">Quizu</span></h2>
 
-
+                </div>
             </div>
-        </div>
+        </a>
     </header>
-
-    <p>Aplikacja została stworzona do pomocy wybrania zawodu. Działa na zasadzie takiej, że Osoba podchodzi do Quizu
-        (stworzonego na podstawie <a href="https://en.wikipedia.org/wiki/Holland_Codes" target="_blank">testów Hollanda</a>),
-        dzięki czemu poznaje swoje 3 typy osobowości (I w ilu procentach należy do tego typu) pośród 6 głównych typów wyznaczonych przez Hollanda:</p>
-    <ul>
-        <li>Typ realistyczny / praktyczny</li>
-        <li>Typ badawczy</li>
-        <li>Typ artystyczny</li>
-        <li>Typ społeczny - socjalny</li>
-        <li>Typ przedsiębiorczy</li>
-        <li>Typ konwencjonalny</li>
-    </ul>
-    <p>
-        Dzięki poznaniu typu osobowości możemy zaproponować tej osobie jakiego typu zawody pasują do niego i podać przykładowe, dzięki czemu
-        ta osoba może zmniejszyć zakres zawodów, i wybrać bardziej pasujący do siebie.
-    </p>
-    <h2>Social Media:</h2>
-    <div class="d-flex p-2 justify-content-center">
-
-        <a href="https://github.com/biter0o1" target="_blank"><i class="fa-brands fa-github fa-10x"></i></a>
-        <a href="https://www.linkedin.com/in/pawe%C5%82-z-960774224/" target="_blank"><i class="fa-brands fa-linkedin fa-10x"></i></a>
-    </div>
-
-
-
-
-
 
 {% endblock %}
 

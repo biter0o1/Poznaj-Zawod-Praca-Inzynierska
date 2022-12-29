@@ -5,16 +5,22 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Wynik Quizu Osobowości</h1>
+    <h1 class="text-center fw-bold fs-1 my-5">Wynik Quizu Osobowości</h1>
 
     {% for i in 0..2 %}
-        <h2>{{ personality[i].type }}</h2>
+        <div
+            {% if i == 0 %} style="background-color: #d4af37;"
+            {% elseif i == 1 %} style="background-color: #c0c0c0;"
+            {% elseif i == 2 %} style="background-color: #cd7f32;"
+            {% endif %} class="result-div">
+        <h2 class="text-center fw-bold fs-2">{{ personality[i].type }}</h2>
 
-        <span> Jesteś tym typem osobowości w {{ percentages[i] }}%</span>
+        <p class="text-center fw-bold fs-5">Jesteś tym typem osobowości w {{ percentages[i] }}%</p>
 
-        <p>{{ personality[i].description }}</p>
-        <p>Rekomendowane rodzaje prac: {{ personality[i].recommendedProffesions }}</p>
-        <p>Przykładowe Zawody: {{ personality[i].exemplaryProfessions }}</p>
+            <p class="text-center fs-4 my-5">{{ personality[i].description }}</p>
+            <p class="text-center fw-bold fs-5">Rekomendowane rodzaje prac: <span class="highlight-text-a-little">{{ personality[i].recommendedProffesions }}</span></p>
+            <p class="text-center fw-bold fs-5 mb-5">Przykładowe Zawody: <span class="highlight-text-a-little">{{ personality[i].exemplaryProfessions }}</span></p>
+        </div>
     {% endfor %}
 
     <script type="application/javascript">

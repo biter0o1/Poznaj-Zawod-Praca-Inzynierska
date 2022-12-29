@@ -75,7 +75,15 @@ class QuizController extends AbstractController
 
         foreach ($amount as $k => $i)
         {
-            $percenteges[$index] = number_format(($i / $amountOfAllchecked) * 100, 2); // Liczenie ile to procent
+            if($amountOfAllchecked !== 0)
+            {
+                $percenteges[$index] = number_format(($i / $amountOfAllchecked) * 100, 2); // Liczenie ile to procent
+            }
+            else
+            {
+                $percenteges[$index] = 0;
+            }
+
             $personality[$index++] = $quizResultRepository->findOneBy(['sign' => $k]);
         }
 

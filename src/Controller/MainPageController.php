@@ -17,9 +17,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainPageController extends AbstractFOSRestController
 {
     #[Route('/', name: 'main_page_index', methods: 'GET')]
-    public function testJson(Request $request): Response
+    public function mainPage(Request $request): Response
     {
         return $this->render('mainPage/index.html.twig', [
+
+        ]);
+    }
+
+    #[Route('/about', name: 'about_index', methods: 'GET')]
+    public function about(Request $request): Response
+    {
+        return $this->render('mainPage/about.html.twig', [
 
         ]);
     }

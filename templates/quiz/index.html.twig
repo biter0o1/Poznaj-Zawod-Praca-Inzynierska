@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Quiz Osobowości</h1>
+    <h1 class="fw-bold my-5">Quiz Osobowości</h1>
     <p class="description">Wykonaj quiz aby móc poznać Swoją osobowość. Zaznacz stwierdzenia które pasują do Ciebie.</p>
 
     <form method="post" action="{{ path('quiz_index') }}" onsubmit="return confirm('Czy chcesz zakończy test?');">
@@ -17,8 +17,10 @@
                 </button>
             {% endfor %}
         </div>
-        <p class="description">Jesli zaznaczone zostały już wszystkie pasujące do Ciebie stwierdzenia, zakończ quiz.</p>
-        <button class="btn btn-secondary">Zakończ QUIZ</button>
+        <p class="description my-5">Jesli zaznaczone zostały już wszystkie pasujące do Ciebie stwierdzenia, zakończ quiz.</p>
+        <div class="row justify-content-center my-5">
+            <button class="btn btn-success btn-lg w-50">Zakończ QUIZ</button>
+        </div>
     </form>
 
 
