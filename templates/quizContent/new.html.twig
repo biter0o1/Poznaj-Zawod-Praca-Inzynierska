@@ -3,13 +3,17 @@
 {% block title %}Stwórz nowy element quizu{% endblock %}
 
 {% block body %}
-    <h1>Stwórz nowy element quizu</h1>
+    <h1 class="fw-bold my-5">Stwórz nowy element quizu</h1>
 
     {% form_theme form 'bootstrap_5_layout.html.twig' %}
     {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn btn-primary">{{ button_label | default('Zapisz') }}</button>
+    <div class="row justify-content-center my-5">
+        <button class="btn btn-success btn-lg w-25">{{ button_label | default('Zapisz') }}</button>
+    </div>
     {{ form_end(form) }}
 
-    <a href="{{ path('quizContent_index') }}">Wróć do zawartości Quizu</a>
+    <div class="row text-center my-5">
+        <a href="{{ path('quizContent_index') }}"><button class="btn btn-primary btn-lg">Wróć do zawartości Quizu</button></a>
+    </div>
 {% endblock %}

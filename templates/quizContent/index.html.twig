@@ -5,30 +5,33 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Wyświetlenie zawartości quizu</h1>
-    <div class="row">
-        <a href="{{ path('quizContent_new') }}"><button class="btn btn-primary my-3">Dodaj element quizu</button></a>
+    <h1 class="fw-bold my-5">Wyświetlenie zawartości quizu</h1>
+    <div class="row text-center my-5">
+        <a href="{{ path('quizContent_new') }}"><button class="btn btn-success btn-lg w-50">Dodaj element quizu</button></a>
     </div>
-    <table class="table table-responsive table-primary table-bordered table-hover text-center ">
-        <thead class="thead-dark">
+<div class="table-responsive">
+    <table class="table align-middle text-center table-bordered table-hover table-striped">
+        <thead class="table-primary">
             <tr>
-                <th>Id</th>
-                <th>Text</th>
-                <th>Osobowość</th>
-                <th>Osobowość symbol</th>
-                <th>Akcje</th>
+                <th scope="col">Id</th>
+                <th scope="col">Text</th>
+                <th scope="col">Osobowość</th>
+                <th scope="col">Osobowość symbol</th>
+                <th scope="col">Akcje</th>
             </tr>
         </thead>
         <tbody>
         {% for quizContent in quizContents %}
-            <tr class="bg-primary">
-                <td class="bg-primary">{{ quizContent.id }}</td>
-                <td class="bg-primary">{{ quizContent.text }}</td>
-                <td class="bg-primary">{{ quizContent.personality }}</td>
-                <td class="bg-primary">{{ quizContent.personalitySign }}</td>
-                <td class="bg-primary">
-                    <a href="{{ path('quizContent_show', {'id': quizContent.id}) }}"><button>Pokaż</button></a>
-                    <a href="{{ path('quizContent_edit', {'id': quizContent.id}) }}"><button>Edytuj</button></a>
+            <tr class="bg-table">
+                <td >{{ quizContent.id }}</td>
+                <td >{{ quizContent.text }}</td>
+                <td >{{ quizContent.personality }}</td>
+                <td >{{ quizContent.personalitySign }}</td>
+                <td>
+                    <div class="row text-center">
+                        <a href="{{ path('quizContent_show', {'id': quizContent.id}) }}"><button class="btn btn-primary mb-1">Pokaż</button></a>
+                        <a href="{{ path('quizContent_edit', {'id': quizContent.id}) }}"><button class="btn btn-success">Edytuj</button></a>
+                    </div>
                 </td>
             </tr>
         {% else %}
@@ -38,6 +41,7 @@
         {% endfor %}
         </tbody>
     </table>
+</div>
 
 {% endblock %}
 

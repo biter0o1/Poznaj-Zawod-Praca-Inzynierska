@@ -3,20 +3,25 @@
 {% block title %}Edytuj zawartość quizu{% endblock %}
 
 {% block body %}
-    <h1>Edytuj zawartość quizu</h1>
+    <h1 class="fw-bold my-5">Edytuj zawartość quizu</h1>
 
     {% form_theme form 'bootstrap_5_layout.html.twig' %}
     {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn btn-primary">{{ button_label | default('Zapisz') }}</button>
+    <div class="row justify-content-center my-5">
+        <button class="btn btn-success btn-lg w-25">{{ button_label | default('Zapisz') }}</button>
+    </div>
     {{ form_end(form) }}
-
-
-    <a href="{{ path('quizContent_index') }}"><button>Wróć do zawartości Quizu</button></a>
 
     <form method="post" action="{{ path('quizContent_delete', {'id': quizContent.id}) }}" onsubmit="return confirm('Czy napewno chcesz usunąć ten element?');">
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ quizContent.id) }}">
-        <button class="btn btn-danger">Delete</button>
+        <div class="row justify-content-center my-5">
+            <button class="btn btn-danger btn-lg w-25">Delete</button>
+        </div>
     </form>
+
+    <div class="text-center">
+        <a href="{{ path('quizContent_index') }}"><button class="btn btn-primary btn-lg w-25">Wróć do zawartości Quizu</button></a>
+    </div>
 
 {% endblock %}

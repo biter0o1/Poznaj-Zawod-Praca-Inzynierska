@@ -8,26 +8,37 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <th>Text</th>
-                <th>Osobowość</th>
-                <th>Osobowość symbol</th>
+                <th>Nazwa</th>
+                <th>Zawartosc</th>
             </tr>
             <tr>
+                <td class="bg-primary">Id: </td>
                 <td class="bg-primary">{{ quizContent.id }}</td>
+            </tr>
+            <tr>
+                <td class="bg-primary">Text: </td>
                 <td class="bg-primary">{{ quizContent.text }}</td>
-                <td class="bg-primary">{{ quizContent.personality }}</td>
+            </tr>
+            <tr>
+                <td class="bg-primary">Osobowość</td>
+                <td class="bg-primary">{{ quizContent.personality}}</td>
+            </tr>
+            <tr>
+                <td class="bg-primary">Osobowość symbol</td>
                 <td class="bg-primary">{{ quizContent.personalitySign }}</td>
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('quizContent_index') }}"><button>Wróć do listy Użytkowników</button></a>
-
-    <a href="{{ path('quizContent_edit', {'id': quizContent.id}) }}"><button>Edytuj</button></a>
+    
+    <div class="text-center">
+        <a href="{{ path('quizContent_edit', {'id': quizContent.id}) }}"><button class="btn btn-success btn-lg w-25">Edytuj</button></a>
+        <a href="{{ path('quizContent_index') }}"><button class="btn btn-primary btn-lg w-25">Wróć do zawartości Quizu</button></a>
+    </div>
 
     <form method="post" action="{{ path('quizContent_delete', {'id': quizContent.id}) }}" onsubmit="return confirm('Czy napewno chcesz usunąć ten element?');">
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ quizContent.id) }}">
-        <button class="btn btn-danger">Delete</button>
+        <div class="row justify-content-center my-5">
+            <button class="btn btn-danger btn-lg w-25">Delete</button>
+        </div>
     </form>
 {% endblock %}
