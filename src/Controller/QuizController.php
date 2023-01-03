@@ -32,23 +32,26 @@ class QuizController extends AbstractController
             //TODO Zapisać quiz do bazy danych, (potem bd mozna odtworzyć historie)
             $req = $request->request->all();
 
-            $iloscKazdejOsobowosci = [];
-            $iloscKazdejOsobowosci['R'] = 0;
-            $iloscKazdejOsobowosci['B'] = 0;
-            $iloscKazdejOsobowosci['A'] = 0;
-            $iloscKazdejOsobowosci['S'] = 0;
-            $iloscKazdejOsobowosci['P'] = 0;
-            $iloscKazdejOsobowosci['K'] = 0;
 
-            foreach ($req as $i) // $i == personalitySign np 'R'
+
+            $valueOfEachPersonality = [];
+            $valueOfEachPersonality['R'] = 0;
+            $valueOfEachPersonality['B'] = 0;
+            $valueOfEachPersonality['A'] = 0;
+            $valueOfEachPersonality['S'] = 0;
+            $valueOfEachPersonality['P'] = 0;
+            $valueOfEachPersonality['K'] = 0;
+
+            foreach ($req as $item) // $i == personalitySign np 'R'
             {
-                $iloscKazdejOsobowosci[$i]++;
+
+                $valueOfEachPersonality[$item[0]] += intval($item[1]);
             }
 
-            asort($iloscKazdejOsobowosci);
-            $iloscKazdejOsobowosci = array_slice(array_reverse($iloscKazdejOsobowosci, true),0, 3, true);
+            asort($valueOfEachPersonality);
+            $valueOfEachPersonality = array_slice(array_reverse($valueOfEachPersonality, true),0, 3, true); // Zwraca 3 osobowości z najwiekszą ilością 'punktów'
 
-            return $this->redirectToRoute('endQuiz_index', ['amount' => $iloscKazdejOsobowosci], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('endQuiz_index', ['amount' => $valueOfEachPersonality], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('quiz/index.html.twig', [
@@ -75,7 +78,7 @@ class QuizController extends AbstractController
 
         foreach ($amount as $k => $i)
         {
-            if($amountOfAllchecked !== 0)
+            if($amountOfAllchecked !== 0) // zeby nie dzilic przez 0
             {
                 $percenteges[$index] = number_format(($i / $amountOfAllchecked) * 100, 2); // Liczenie ile to procent
             }
