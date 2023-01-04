@@ -2,9 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\QuizContent;
-use App\Form\QuizContentType;
-use App\Form\QuizType;
 use App\Repository\QuizContentRepository;
 use App\Repository\QuizResultRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,27 +9,16 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-    $REALISTYCZNY_PRAKTYCZNY = ['type' => 'Realistyczny-Praktyczny', 'sign' => 'R'];
-    $BADAWCZY = ['type' => 'Badawczy', 'sign' => 'B'];
-    $ARTYSTYCZNY = ['type' => 'Artystyczny', 'sign' => 'A'];
-    $SPOLECZNY_SOCJALNY = ['type' => 'Spoleczny-Socjalny', 'sign' => 'S'];
-    $PRZEDSIEBIORCZY = ['type' => 'Przedsiebiorczy', 'sign' => 'P'];
-    $KONWENCJONALNY = ['type' => 'Konwencjonalny', 'sign' => 'K'];
 #[Route('/quiz')]
 class QuizController extends AbstractController
 {
-
-
 
     #[Route('/', name: 'quiz_index', methods: ['GET', 'POST'])]
     public function index(Request $request, QuizContentRepository $quizContentRepository): Response
     {
 
         if ($request->isMethod('POST')) {
-            //TODO Zapisać quiz do bazy danych, (potem bd mozna odtworzyć historie)
             $req = $request->request->all();
-
-
 
             $valueOfEachPersonality = [];
             $valueOfEachPersonality['R'] = 0;
@@ -42,9 +28,8 @@ class QuizController extends AbstractController
             $valueOfEachPersonality['P'] = 0;
             $valueOfEachPersonality['K'] = 0;
 
-            foreach ($req as $item) // $i == personalitySign np 'R'
+            foreach ($req as $item)
             {
-
                 $valueOfEachPersonality[$item[0]] += intval($item[1]);
             }
 
@@ -54,8 +39,11 @@ class QuizController extends AbstractController
             return $this->redirectToRoute('endQuiz_index', ['amount' => $valueOfEachPersonality], Response::HTTP_SEE_OTHER);
         }
 
+        $quizContentValues = $quizContentRepository->findAll();
+        shuffle($quizContentValues); //wyswietlenie stwierdzen quizu w losowej kolejnosci
+
         return $this->renderForm('quiz/index.html.twig', [
-            'quizContents' => $quizContentRepository->findAll(),
+            'quizContents' => $quizContentValues,
         ]);
     }
 
