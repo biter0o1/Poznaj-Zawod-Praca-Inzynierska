@@ -33,7 +33,7 @@
                             <a class="nav-link active" href="{{ path('quizContent_index') }}">Zarządzaj zawartością testu osobowości</a>
                     {% endif %}
                     {% if app.user %}
-                            <span class="nav-link active nav-logged-bg ">Zalogowano jako: {{ app.user }}</span>
+{#                            <span class="nav-link active nav-logged-bg ">Zalogowano jako: {{ app.user }}</span>#}
                             <a class="nav-link active nav-logged-bg " href="{{ path('app_logout') }}">Wyloguj się</a>
                             <a class="nav-link active nav-logged-bg " href="{{ path('example') }}">Mój profil</a>
                     {% endif %}
@@ -53,7 +53,6 @@
         {{ encore_entry_script_tags('js/app') }}
         <script type="application/javascript" src="{{ asset('build/js/app.js') }}"></script>
         <script src="https://kit.fontawesome.com/e1fc8e90d1.js" crossorigin="anonymous"></script>
-{#        font awesome#}
     {% endblock %}
     </body>
 </html>
