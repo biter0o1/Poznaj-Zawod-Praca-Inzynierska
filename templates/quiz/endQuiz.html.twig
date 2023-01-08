@@ -7,6 +7,9 @@
 {% block body %}
     <h1 class="text-center fw-bold fs-1 my-5">Wynik Quizu Osobowości</h1>
 
+
+    <div id="piechart_3d" class="nav-bg-color" style="width: 900px; height: 500px;"></div>
+
     {% for i in 0..2 %}
         <div
             {% if i == 0 %} style="background-color: #d4af37;"
@@ -23,8 +26,37 @@
         </div>
     {% endfor %}
 
-    <script type="application/javascript">
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            // valuess = []
+            for (let i = 0; i < 3; i++)
+            {
+                valuess = [{{ percentages | join(', ') }}];
+            }
+
+
+
+            console.log(valuess);
+
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Work',     11],
+                ['Eat',      2],
+                ['Commute',  2],
+            ]);
+
+            var options = {
+                title: 'My Daily Activities',
+                is3D: true,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+        }
     </script>
 
 {% endblock %}
