@@ -35,7 +35,7 @@
                     {% if app.user %}
 {#                            <span class="nav-link active nav-logged-bg ">Zalogowano jako: {{ app.user }}</span>#}
                             <a class="nav-link active nav-logged-bg " href="{{ path('app_logout') }}">Wyloguj się</a>
-                            <a class="nav-link active nav-logged-bg " href="{{ path('example') }}">Mój profil</a>
+                            <a class="nav-link active nav-logged-bg " href="{{ path('user_profile', {'id': app.user.id}) }}">Mój profil</a>
                     {% endif %}
                 </div>
             </div>

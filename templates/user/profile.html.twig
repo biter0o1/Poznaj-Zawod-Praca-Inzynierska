@@ -5,6 +5,38 @@
 {% endblock %}
 
 {% block body %}
+    <h1 class="fw-bold my-5">Profil Użytkownika</h1>
+    <h2 class="text-center">Historia Quizów</h2>
+    <div class="table-responsive">
+        <table class="table align-middle text-center table-bordered table-hover table-striped">
+            <thead class="table-primary">
+            <tr>
+                <th scope="col">Lp.</th>
+                <th scope="col">GŁówna osobowość quizu</th>
+                <th scope="col">Czas podejścia do quizu</th>
+                <th scope="col">Akcje</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for quizHistoryItem in quizHistory %}
+                <tr class="bg-table">
+                    <td >{{ loop.index }}</td>
+                    <td >{{ quizHistoryItem.firstPersonality }}</td>
+                    <td >{{ quizHistoryItem.dateTime | date('Y-m-d H:i:s') }}</td>
+                    <td>
+                        <div class="row text-center">
+                            <a href="{{ path('quiz_history', {'id': quizHistoryItem.id}) }}"><button class="btn btn-primary mb-1">Pokaż Wyniki</button></a>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Twoja Historia Quizów jest pusta</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
 
 {% endblock %}
