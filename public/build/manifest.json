@@ -1,10 +1,7 @@
 {
-  "build/js/app.css": "http://localhost:8080/build/js/app.css",
-  "build/js/app.js": "http://localhost:8080/build/js/app.js",
-  "build/runtime.js": "http://localhost:8080/build/runtime.js",
-  "build/vendors-node_modules_popperjs_core_lib_index_js-node_modules_symfony_stimulus-bridge_dist_ind-efe33c.js": "http://localhost:8080/build/vendors-node_modules_popperjs_core_lib_index_js-node_modules_symfony_stimulus-bridge_dist_ind-efe33c.js",
-  "build/images/coins-job-word.jpg": "http://localhost:8080/build/images/coins-job-word.a79afaf3.jpg",
-  "build/images/jobs.jpg": "http://localhost:8080/build/images/jobs.c02f6b14.jpg",
-  "build/images/jobs2.jpg": "http://localhost:8080/build/images/jobs2.6828952a.jpg",
-  "build/images/jobs3.jpg": "http://localhost:8080/build/images/jobs3.e890a65a.jpg"
+  "build/js/app.css": "/build/js/app.css",
+  "build/js/app.js": "/build/js/app.js",
+  "build/runtime.js": "/build/runtime.js",
+  "build/vendors-node_modules_popperjs_core_lib_index_js-node_modules_symfony_stimulus-bridge_dist_ind-9aa157.js": "/build/vendors-node_modules_popperjs_core_lib_index_js-node_modules_symfony_stimulus-bridge_dist_ind-9aa157.js",
+  "build/images/jobs3.jpg": "/build/images/jobs3.e890a65a.jpg"
 }
