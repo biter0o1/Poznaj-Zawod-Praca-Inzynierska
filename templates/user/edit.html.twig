@@ -8,14 +8,20 @@
     {% form_theme form 'bootstrap_5_layout.html.twig' %}
     {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Zapisz') }}</button>
+    <div class="row justify-content-center my-5">
+        <button class="btn btn-success btn-lg w-25">{{ button_label | default('Zapisz') }}</button>
+    </div>
     {{ form_end(form) }}
 
 
-    <a href="{{ path('user_index') }}">Wróć do listy Użytkowników</a>
-
     <form method="post" action="{{ path('user_delete', {'id': user.id}) }}" onsubmit="return confirm('Czy napewno chcesz usunąć tego użytkownika?');">
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
-        <button class="btn">Delete</button>
+        <div class="row justify-content-center my-5">
+            <button class="btn btn-danger btn-lg w-25">Delete</button>
+        </div>
     </form>
+
+    <div class="text-center">
+        <a href="{{ path('user_index') }}"><button class="btn btn-primary btn-lg w-25">Wróć do listy użytkowników</button></a>
+    </div>
 {% endblock %}

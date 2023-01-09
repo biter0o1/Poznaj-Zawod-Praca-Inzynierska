@@ -7,7 +7,9 @@
 
     {% form_theme form 'bootstrap_5_layout.html.twig' %}
     {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.text) }}
+    {{ form_row(form.personality) }}
+    {{ form_row(form.personalitySign) }}
     <div class="row justify-content-center my-5">
         <button class="btn btn-success btn-lg w-25">{{ button_label | default('Zapisz') }}</button>
     </div>
@@ -16,4 +18,17 @@
     <div class="row text-center my-5">
         <a href="{{ path('quizContent_index') }}"><button class="btn btn-primary btn-lg">Wróć do zawartości Quizu</button></a>
     </div>
+
+
+    <script type="text/javascript">
+        const personality = document.querySelector('#quiz_content_personality');
+        const personalitySign = document.querySelector('#quiz_content_personalitySign');
+
+        personalitySign.value = 'R'; // Standardowo ma R
+
+        personality.addEventListener('change', () => {
+            personalitySign.value = personality.value.substring(0, 1); //ustawia znak automatycznie, zawsze rowna się pierwszej litzerze osobowości
+        })
+
+    </script>
 {% endblock %}

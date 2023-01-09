@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Resetowanie hasła{% endblock %}
+
+{% block body %}
+    <p>
+        Jeśli email istnieje w bazie danych, wysłany został link gdzie możesz zrestratować hasło
+        Link wygaśnie za {{ resetToken.expirationMessageKey | trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+    </p>
+     <a href="{{ path('app_forgot_password_request') }}"><button class="btn btn-primary">Spróbuj jeszcze raz</button></a>
+{% endblock %}
