@@ -8,9 +8,13 @@
     {% form_theme form 'bootstrap_5_layout.html.twig' %}
     {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Zapisz') }}</button>
+    <div class="row justify-content-center my-5">
+        <button class="btn btn-success btn-lg w-25">{{ button_label | default('Zapisz') }}</button>
+    </div>
     {{ form_end(form) }}
 
 
-    <a href="{{ path('user_index') }}">Wróć do listy użytkowników</a>
+    <div class="row text-center my-5">
+        <a href="{{ path('user_index') }}"><button class="btn btn-primary btn-lg">Wróć do listy użytkowników</button></a>
+    </div>
 {% endblock %}

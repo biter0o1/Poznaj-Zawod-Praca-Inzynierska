@@ -5,40 +5,44 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Wyświetlenie użytkowników</h1>
-    <div class="row justify-content-center">
-        <a href="{{ path('user_new') }}"><button>Dodaj użytkownika</button></a>
-        <table class="table table-responsive table-primary table-bordered table-hover text-center">
-            <thead class="thead-dark">
+    <h1 class="fw-bold my-5">Wyświetlenie użytkowników</h1>
+    <div class="row text-center my-5">
+        <a href="{{ path('user_new') }}"><button class="btn btn-success btn-lg w-50">Dodaj użytkownika</button></a>
+    </div>
+<div class="table-responsive">
+        <table class="table align-middle text-center table-bordered table-hover table-striped">
+            <thead class="table-primary">
                 <tr>
-                    <th>Id</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Zweryfikowany</th>
-                    <th>Akcje</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Zweryfikowany</th>
+                    <th scope="col">Akcje</th>
                 </tr>
             </thead>
             <tbody>
             {% for user in users %}
-                <tr class="bg-info">
-                    <td class="bg-success">{{ user.id }}</td>
-                    <td class="bg-primary">{{ user.username }}</td>
-                    <td class="bg-primary">{{ user.email }}</td>
-                    <td class="bg-primary">{{ user.roles | join(', ') }}</td>
-                    <td class="bg-primary">{{ user.isVerified ? "Tak" : "Nie" }}</td>
-                    <td class="bg-primary">
-                        <a href="{{ path('user_show', {'id': user.id}) }}"><button>Pokaż</button></a>
-                        <a href="{{ path('user_edit', {'id': user.id}) }}"><button>Edytuj</button></a>
+                <tr class="bg-table">
+                    <td >{{ user.id}}</td>
+                    <td >{{ user.username }}</td>
+                    <td >{{ user.email }}</td>
+                    <td >{{ user.roles | join(', ') }}</td>
+                    <td >{{ user.isVerified ? "Tak" : "Nie"}}</td>
+                    <td>
+                        <div class="row text-center">
+                            <a href="{{ path('user_show', {'id': user.id}) }}"><button class="btn btn-primary mb-1">Pokaż</button></a>
+                            <a href="{{ path('user_edit', {'id': user.id}) }}"><button class="btn btn-success">Edytuj</button></a>
+                        </div>
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="3">Nie znaleziono użytkowników</td>
+                    <td colspan="6">Nie znaleziono użytkowników</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-    </div>
+</div>
 {% endblock %}
 
