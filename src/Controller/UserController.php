@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\QuizHistory;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\QuizHistoryRepository;
@@ -10,11 +9,23 @@ use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/user')]
 class UserController extends AbstractController
 {
+
+    private $password;
+
+    public function __construct(UserPasswordHasherInterface $password)
+
+    {
+
+        $this->password = $password;
+
+    }
+
     #[Route('/', name: 'user_index', methods: 'GET')]
     public function index(UserRepository $userRepository): Response
     {
@@ -31,6 +42,9 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $hashedPassword = $this->password->hashPassword($user, $user->getPassword());
+            $user->setPassword($hashedPassword);
+
             $userRepository->add($user, true);
 
             return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
@@ -45,6 +59,10 @@ class UserController extends AbstractController
     #[Route('/{id}/profile', name: 'user_profile', methods: ['GET', 'POST'])]
     public function profile(User $user, QuizHistoryRepository $quizHistoryRepository): Response
     {
+        if ($this->getUser()->getId() != $user->getId()) {
+            return $this->redirectToRoute('main_page_index');
+        }
+
         $quizHistory = $quizHistoryRepository->findBy(['user' => $user->getId()], ['dateTime' => 'DESC']);
 
         return $this->renderForm('user/profile.html.twig', [
@@ -68,6 +86,9 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $hashedPassword = $this->password->hashPassword($user, $user->getPassword());
+            $user->setPassword($hashedPassword);
+
             $userRepository->add($user, true);
 
             return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);

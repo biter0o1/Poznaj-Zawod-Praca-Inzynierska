@@ -109,6 +109,10 @@ class QuizController extends AbstractController
     #[Route('/history/{id}', name: 'quiz_history', methods: ['GET'])]
     public function quizHistory(QuizHistory $quizHistory, QuizResultRepository $quizResultRepository): Response
     {
+        if ($this->getUser()->getId() != $quizHistory->getUser()->getId()) {
+            return $this->redirectToRoute('main_page_index');
+        }
+
         $amount = $quizHistory->getFirstPersonalityValue() + $quizHistory->getSecondPersonalityValue() + $quizHistory->getThirdPersonalityValue();
 
         $percenteges = [];
@@ -122,6 +126,7 @@ class QuizController extends AbstractController
         $personality[] = $quizResultRepository->findOneBy(['sign' => $quizHistory->getSecondPersonality()]);
         $personality[] = $quizResultRepository->findOneBy(['sign' => $quizHistory->getThirdPersonality()]);
 
+//        var_dump($percenteges);die;
         return $this->renderForm('quiz/endQuiz.html.twig', [
             'personality' => $personality,
             'percentages' => $percenteges,

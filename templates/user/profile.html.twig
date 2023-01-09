@@ -12,7 +12,7 @@
             <thead class="table-primary">
             <tr>
                 <th scope="col">Lp.</th>
-                <th scope="col">GŁówna osobowość quizu</th>
+                <th scope="col">Wynik Osobowości skrótowo:</th>
                 <th scope="col">Czas podejścia do quizu</th>
                 <th scope="col">Akcje</th>
             </tr>
@@ -21,7 +21,11 @@
             {% for quizHistoryItem in quizHistory %}
                 <tr class="bg-table">
                     <td >{{ loop.index }}</td>
-                    <td >{{ quizHistoryItem.firstPersonality }}</td>
+                    <td >
+                        {{ quizHistoryItem.firstPersonality }},
+                        {{ quizHistoryItem.secondPersonality }},
+                        {{ quizHistoryItem.thirdPersonality }}
+                    </td>
                     <td >{{ quizHistoryItem.dateTime | date('Y-m-d H:i:s') }}</td>
                     <td>
                         <div class="row text-center">

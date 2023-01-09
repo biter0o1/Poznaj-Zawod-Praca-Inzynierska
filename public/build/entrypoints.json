@@ -2,12 +2,12 @@
   "entrypoints": {
     "js/app": {
       "js": [
-        "/build/runtime.js",
-        "/build/vendors-node_modules_popperjs_core_lib_index_js-node_modules_symfony_stimulus-bridge_dist_ind-9aa157.js",
-        "/build/js/app.js"
+        "http://localhost:8080/build/runtime.js",
+        "http://localhost:8080/build/vendors-node_modules_popperjs_core_lib_index_js-node_modules_symfony_stimulus-bridge_dist_ind-f0b3b7.js",
+        "http://localhost:8080/build/js/app.js"
       ],
       "css": [
-        "/build/js/app.css"
+        "http://localhost:8080/build/js/app.css"
       ]
     }
   }

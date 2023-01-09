@@ -7,8 +7,7 @@
 {% block body %}
     <h1 class="text-center fw-bold fs-1 my-5">Wynik Quizu Osobowości</h1>
 
-
-    <div id="piechart_3d" class="nav-bg-color" style="width: 900px; height: 500px;"></div>
+    <div id="piechart_3d" class="m-auto" style="width: 900px; height: 500px;"></div>
 
     {% for i in 0..2 %}
         <div
@@ -32,26 +31,21 @@
         google.charts.load("current", {packages:["corechart"]});
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
-            // valuess = []
-            for (let i = 0; i < 3; i++)
-            {
-                valuess = [{{ percentages | join(', ') }}];
-            }
+            percentages = JSON.parse('{{ percentages | json_encode | raw }}');
+            personality = JSON.parse('{{ personality | map(x => x.type) | json_encode | raw }}');
 
-
-
-            console.log(valuess);
 
             var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
-                ['Work',     11],
-                ['Eat',      2],
-                ['Commute',  2],
+                ['Osobowość', 'Procenty'],
+                [personality[0],     parseInt(percentages[0])],
+                [personality[1],      parseInt(percentages[1])],
+                [personality[2],  parseInt(percentages[2])],
             ]);
 
             var options = {
-                title: 'My Daily Activities',
+                title: 'Twoja osobowość',
                 is3D: true,
+                backgroundColor: { fill:'transparent' }
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));

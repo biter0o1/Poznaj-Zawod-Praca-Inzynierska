@@ -18,8 +18,8 @@ h1 {
     background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
 }
 
-.nav-logged-bg {
-    /*background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);*/
+.border-left {
+    border-left: black 1px solid;
 }
 
 .navbar {
@@ -105,11 +105,10 @@ h1 {
 }
 
 .highlight-text {
-    color: #cf84ec;
+    color: #298bee;
     font-size: 3rem;
     text-transform: uppercase;
     text-decoration: underline;
-    text-shadow: 4px 4px 9px rgba(61, 187, 237, 1);
 }
 
 .highlight-text-a-little {

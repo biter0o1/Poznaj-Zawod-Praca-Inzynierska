@@ -16,6 +16,10 @@ class QuizContentController extends AbstractController
     #[Route('/', name: 'quizContent_index', methods: 'GET')]
     public function index(QuizContentRepository $quizContentRepository): Response
     {
+        if (!in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
+            return $this->redirectToRoute('main_page_index');
+        }
+
         return $this->render('quizContent/index.html.twig', [
             'quizContents' => $quizContentRepository->findAll(),
         ]);
