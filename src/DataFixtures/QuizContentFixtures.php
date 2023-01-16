@@ -499,7 +499,7 @@ class QuizContentFixtures extends Fixture
 
         $quizContent = new QuizContent();
         $quizContent
-            ->setText('Nie widziałem cię długi czas, powiedz co u ciebie.')
+            ->setText('Często pytam ludzi co u nich słychać')
             ->setPersonality($SPOLECZNY_SOCJALNY['type'])
             ->setPersonalitySign($SPOLECZNY_SOCJALNY['sign']);
 
@@ -548,7 +548,7 @@ class QuizContentFixtures extends Fixture
 
         $quizContent = new QuizContent();
         $quizContent
-            ->setText('Powiedz mi jak ci mogę pomóc.')
+            ->setText('Często pytam ludzi jak mogę im pomóc')
             ->setPersonality($SPOLECZNY_SOCJALNY['type'])
             ->setPersonalitySign($SPOLECZNY_SOCJALNY['sign']);
 
@@ -581,7 +581,7 @@ class QuizContentFixtures extends Fixture
 
         $quizContent = new QuizContent();
         $quizContent
-            ->setText('Ci ludzie działają stymulująco na mój intelekt.')
+            ->setText('Ludzie działają stymulująco na mój intelekt.')
             ->setPersonality($BADAWCZY['type'])
             ->setPersonalitySign($BADAWCZY['sign']);
 
@@ -605,7 +605,7 @@ class QuizContentFixtures extends Fixture
 
         $quizContent = new QuizContent();
         $quizContent
-            ->setText('Zabawne jest podsuwać innym ludziom pomysły.')
+            ->setText('Fajnie jest podsuwać innym ludziom pomysły.')
             ->setPersonality($PRZEDSIEBIORCZY['type'])
             ->setPersonalitySign($PRZEDSIEBIORCZY['sign']);
 
@@ -727,7 +727,7 @@ class QuizContentFixtures extends Fixture
 
         $quizContent = new QuizContent();
         $quizContent
-            ->setText('Nie denerwuj się. Możemy przemyśleć sprawę i zaplanować następny krok.')
+            ->setText('Nie denerwuję się. Poprostu myśle o następnych krokach.')
             ->setPersonality($BADAWCZY['type'])
             ->setPersonalitySign($BADAWCZY['sign']);
 

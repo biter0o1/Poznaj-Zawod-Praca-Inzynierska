@@ -6,6 +6,11 @@
 
 {% block body %}
     <h1 class="text-center fw-bold fs-1 my-5">Wynik Quizu Osobowości</h1>
+    <p class="description">Dziękujemy za wypełnienie testu osobowości Hollanda.
+        Według Johna Hollanda, amerykańskiego naukowca ludzie są predysponowani do poszczególnych zawodów przez
+        swoją osobowość oraz różne czynniki związane z ich otoczeniem.
+        Wybór zawodu jest połączeniem indywidualnych preferencji z możliwościami, jakie oferuje rynek pracy.
+        Holland wyróżnia sześć dominujących typów preferencji zawodowych i sześć odpowiadających im środowisk pracy.</p>
 
     <div id="piechart_3d" class="m-auto" style="width: 900px; height: 500px;"></div>
 
@@ -24,6 +29,11 @@
             <p class="text-center fw-bold fs-5 mb-5">Przykładowe Zawody: <span class="highlight-text-a-little">{{ personality[i].exemplaryProfessions }}</span></p>
         </div>
     {% endfor %}
+    <p class="description mb-5">Pokazane wyżej opisy oraz preferencje zawodów pomogą ci zawęzić rodzaje prac, której do ciebie pasują.
+        Pamiętaj, że ludzie poszukują środowiska pracy, w którym mogą rozwijać swoje talenty, prezentować swoje przekonania,
+        wartości, cechy charakteru i preferowane role, a także odpowiada ono ich własnemu postrzeganiu siebie.
+        Jeśli ta poszukiwana nie kończy się sukcesem, może to prowadzić do konfliktów, frustracji, niskiego poziomu osiągnięć i niskiej
+        satysfakcji z pracy. Taki scenariusz może mieć miejsce, gdy osoba o typie społecznym jest zmuszona do pracy w środowisku realistycznym.</p>
 
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

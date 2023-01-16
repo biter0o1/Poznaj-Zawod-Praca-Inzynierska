@@ -6,20 +6,20 @@
 
 {% block body %}
     <h1 class="fw-bold my-4">Quiz Osobowości</h1>
-    <p class="description">Wykonaj quiz aby móc poznać Swoją osobowość. Zaznacz w ilu procentach pasuję do Ciebie dane stwierdzenie!</p>
+    <p class="description">Wykonaj quiz aby móc poznać Swoją osobowość. Zaznacz w jakim stopniu pasuję do Ciebie dane stwierdzenie!</p>
 
     <form method="post" action="{{ path('quiz_index') }}" onsubmit="return confirm('Czy chcesz zakończy test?');">
             {% for quizContent in quizContents %}
                 <div id="quiz_item_{{ loop.index }}" {% if loop.first %} class="quiz-item" {% else %} class="quiz-item d-none" {% endif %}>
-                    {{ quizContent.text }}
+                    <span class="statement">{{ quizContent.text }}</span>
                     <input type="hidden" id="quiz_item_personality_sign_{{ loop.index }}" name="{{ loop.index }}[]" value="{{ quizContent.personalitySign }}">
                     <input type="hidden" id="quiz_item_value_{{ loop.index }}" name="{{ loop.index }}[]" value="0"/>
                     <div class="buttons">
-                        <button type="button" onclick="btnClick({{ loop.index }}, 0)" class="btn btn-danger btn-lg quiz-btn">0 %</button>
-                        <button type="button" onclick="btnClick({{ loop.index }}, 25)" class="btn btn-warning btn-lg quiz-btn">25 %</button>
-                        <button type="button" onclick="btnClick({{ loop.index }}, 50)" class="btn btn-secondary btn-lg quiz-btn">50 %</button>
-                        <button type="button" onclick="btnClick({{ loop.index }}, 75)" class="btn btn-info btn-lg quiz-btn">75 %</button>
-                        <button type="button" onclick="btnClick({{ loop.index }}, 100)" class="btn btn-success btn-lg quiz-btn">100 %</button>
+                        <button type="button" onclick="btnClick({{ loop.index }}, 0)" class="btn btn-danger btn-lg quiz-btn">Nie zgadzam się</button>
+                        <button type="button" onclick="btnClick({{ loop.index }}, 25)" class="btn btn-warning btn-lg quiz-btn">Raczej nie zgadzam się</button>
+                        <button type="button" onclick="btnClick({{ loop.index }}, 50)" class="btn btn-secondary btn-lg quiz-btn">Trudno powiedzieć</button>
+                        <button type="button" onclick="btnClick({{ loop.index }}, 75)" class="btn btn-info btn-lg quiz-btn">Raczej zgadzam się</button>
+                        <button type="button" onclick="btnClick({{ loop.index }}, 100)" class="btn btn-success btn-lg quiz-btn">Zgadzam się</button>
                     </div>
                 </div>
                 {% if loop.last %}

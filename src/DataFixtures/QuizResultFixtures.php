@@ -35,8 +35,7 @@ class QuizResultFixtures extends Fixture
                             budować, mieć do czynienia z maszynami. Dążą do skonkretyzowania, czego się od nich
                             oczekuje, co ma być wykonane.')
             ->setRecommendedProffesions('produkcyjna, usługowa, sportowa.')
-            ->setExemplaryProfessions('murarz, elektryk, kierowca, stolarz, technik laboratorium, mechanik,
-                            jubiler, hydraulik.');
+            ->setExemplaryProfessions('ogrodnik, rolnik, leśnik, elektryk, murarz, stolarz, technik laboratorium, jubiler, hydraulik, optyk, kierowca, mechanik, pilot, tapicer oraz wszelkie zawody rzemieślnicze.');
 
         $manager->persist($quizResult);
 
@@ -50,8 +49,8 @@ class QuizResultFixtures extends Fixture
                             problemu. Dobrze odnajdują się w pracy koncepcyjnej, samodzielnej, wymagającej logiki
                             myślenia.')
             ->setRecommendedProffesions('poznawcza, informacyjna')
-            ->setExemplaryProfessions('analityk rynku, matematyk, programista, biolog, anestezjolog, konsultant,
-                            ekonomista.');
+            ->setExemplaryProfessions('analityk rynku, matematyk, programista, biolog, anestezjolog, konsultant, ekonomista, socjolog, antropolog, filozof, geolog, fizyk, astronom, archeolog, chemik, farmaceuta, historyk,
+                    politolog, meteorolog.');
 
         $manager->persist($quizResult);
 
@@ -64,8 +63,8 @@ class QuizResultFixtures extends Fixture
                             wrażliwe. Decyzje podejmują „na wyczucie”, preferują zadania kreatywne, wolą pracować nad
                             ideami, koncepcjami niż nad konkretnymi produktami.')
             ->setRecommendedProffesions('artystyczna, twórcza.')
-            ->setExemplaryProfessions('szef reklamy, projektant mebli: mebli, mody, wnętrz, terenów zielonych,
-                            tancerz, grafik, pisarz, malarz, fotograf.');
+            ->setExemplaryProfessions('szef reklamy, projektant mebli, projektant mody, projektant wnętrz, projektant terenów zielonych, tancerz, grafik, pisarz, malarz, fotograf, aktor, architekt,
+                        dyrygent, kompozytor, muzyk, wizażysta, rzeźbiarz, plastyk.');
 
         $manager->persist($quizResult);
 
@@ -77,8 +76,8 @@ class QuizResultFixtures extends Fixture
                             uprzejme, współpracujące, rozumiejące. Preferują pracę bezpośrednio związane z ludźmi. Lubią
                             wyjaśniać, informować, szkolić, pomagać, doradzać.')
             ->setRecommendedProffesions('organizacyjna, wychowawcza, opiekuńcza, usługowa, sportowa.')
-            ->setExemplaryProfessions('terapeuta, kosmetyczka, nauczyciel, szkoleniowiec, szef personalny,
-                            lekarz, pielęgniarka, pracownik socjalny.');
+            ->setExemplaryProfessions('terapeuta, kosmetyczka, nauczyciel, szkoleniowiec, szef personalny, pracownik socjalny, pielęgniarka, lekarz, masażysta, fizjoterapeuta, logopeda,
+                        masażysta, psycholog, bibliotekarz, hostessa, ksiądz, policjant, ratownik, kelner, stewardessa, trener.');
 
         $manager->persist($quizResult);
 
@@ -91,8 +90,8 @@ class QuizResultFixtures extends Fixture
                             osiągnięcia wyznaczonego celu, wywierające wpływ, mające wymierne osiągnięcia. Osoby takie
                             lubią mówić, promować, sprzedawać, przewodzić, przekonywać.')
             ->setRecommendedProffesions('organizacyjna, usługowa.')
-            ->setExemplaryProfessions('menedżer ds. kluczowych klientów, przedstawiciel handlowy, dziennikarz,
-                            agent ubezpieczeniowy, szef marketingu, szef sprzedaży.');
+            ->setExemplaryProfessions('menedżer ds. kluczowych klientów, przedstawiciel handlowy, dziennikarz, agent ubezpieczeniowy, szef marketingu, szef sprzedaży, prawnik, adwokat, sędzia, notariusz, dyplomata, doradca
+                    podatkowy, makler.');
 
         $manager->persist($quizResult);
 
@@ -104,8 +103,8 @@ class QuizResultFixtures extends Fixture
                             praktyczne, systematyczne. Preferują pracę z danymi liczbowymi, przestrzeganie procedur,
                             organizowanie i porządkowanie danych, korzystanie z programów obliczeniowych.')
             ->setRecommendedProffesions('organizacyjna, porządkowa, informacyjna.')
-            ->setExemplaryProfessions('urzędnik, sekretarka, pracownik biurowy, doradca podatkowy, kasjer,
-                            księgowy');
+            ->setExemplaryProfessions('urzędnik, sekretarka, pracownik biurowy, doradca podatkowy, agent celny, agent ubezpieczeniowy, księgowy, kasjer,
+                    radca prawny, archiwista, statystyk, recepcjonista, kosztorysant, inkasent, technik BHP.');
 
         $manager->persist($quizResult);
         $manager->flush();
