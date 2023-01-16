@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Rejestracja{% endblock %}
 
 {% block body %}
     {% for flash_error in app.flashes('verify_email_error') %}
@@ -14,7 +14,7 @@
             {{ form_row(registrationForm.username) }}
             {{ form_row(registrationForm.email) }}
             {{ form_row(registrationForm.plainPassword, {
-                label: 'Haslo'
+                label: 'Hasło'
             }) }}
             {{ form_row(registrationForm.agreeTerms) }}
 

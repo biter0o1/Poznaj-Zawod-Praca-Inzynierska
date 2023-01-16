@@ -16,12 +16,24 @@
     <form method="post" action="{{ path('quizContent_delete', {'id': quizContent.id}) }}" onsubmit="return confirm('Czy napewno chcesz usunąć ten element?');">
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ quizContent.id) }}">
         <div class="row justify-content-center my-5">
-            <button class="btn btn-danger btn-lg w-25">Delete</button>
+            <button class="btn btn-danger btn-lg w-25">Usuń</button>
         </div>
     </form>
 
     <div class="text-center">
         <a href="{{ path('quizContent_index') }}"><button class="btn btn-primary btn-lg w-25">Wróć do zawartości Quizu</button></a>
     </div>
+
+    <script type="text/javascript">
+        const personality = document.querySelector('#quiz_content_personality');
+        const personalitySign = document.querySelector('#quiz_content_personalitySign');
+
+        personalitySign.value = 'R'; // Standardowo ma R
+
+        personality.addEventListener('change', () => {
+            personalitySign.value = personality.value.substring(0, 1); //ustawia znak automatycznie, zawsze rowna się pierwszej litzerze osobowości
+        })
+
+    </script>
 
 {% endblock %}

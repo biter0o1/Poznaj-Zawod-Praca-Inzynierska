@@ -14,8 +14,12 @@ class QuizContentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('text')
+            ->add('text', TextType::class, [
+                'label' => 'Stwierdzenie/Pytanie',
+                'required' => true,
+            ])
             ->add('personality', ChoiceType::class, [
+                'label' => 'Osobowość',
                 'required' => true,
                 'multiple' => false,
                 'expanded' => false,
@@ -30,8 +34,8 @@ class QuizContentType extends AbstractType
 
             ])
             ->add('personalitySign', TextType::class, [
+                'label' => 'Znak Osobowości',
                 'required' => true,
-
                 'attr'=> [ 'readonly' => true ],
 
             ])

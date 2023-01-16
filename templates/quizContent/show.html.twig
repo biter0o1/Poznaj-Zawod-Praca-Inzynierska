@@ -38,7 +38,7 @@
     <form method="post" action="{{ path('quizContent_delete', {'id': quizContent.id}) }}" onsubmit="return confirm('Czy napewno chcesz usunąć ten element?');">
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ quizContent.id) }}">
         <div class="row justify-content-center my-5">
-            <button class="btn btn-danger btn-lg w-25">Delete</button>
+            <button class="btn btn-danger btn-lg w-25">Usuń</button>
         </div>
     </form>
 {% endblock %}

@@ -76,13 +76,11 @@ h1 {
 .quiz-item {
     display: flex;
     justify-content: space-evenly;
-
     flex-direction: column;
     text-align: center;
-    background-color: tomato;
+    background-color: #5fff45;
     border: #0a0a0a 5px solid;
     border-radius: 20px;
-    width: 80%;
     min-height: 50vh;
     margin: 20px auto;
     font-size: 30px;
@@ -136,4 +134,13 @@ h1 {
 
 .quiz-btn {
     width: 15%;
+}
+
+#logging-out {
+    color: red;
+}
+@media (max-width: 992px) {
+    .border-left {
+        border-left: none;
+    }
 }

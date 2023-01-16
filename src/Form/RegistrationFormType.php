@@ -29,9 +29,10 @@ class RegistrationFormType extends AbstractType
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => 'Zaakceptuj warunki',
                 'mapped' => false,
+                'required' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'Zaakceptuj warunki korzystania z naszych usług.',
+                        'message' => 'Musisz zaakceptować warunki, korzystania z tej strony',
                     ]),
                 ],
             ])
@@ -52,9 +53,8 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Wpisz Hasło.',
                     ]),
                     new Length([
-                        'min' => 6,
+                        'min' => 8,
                         'minMessage' => 'Hasło musi mieć co najmniej {{ limit }} znaków',
-                        // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                 ],
